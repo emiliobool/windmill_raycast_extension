@@ -1,6 +1,5 @@
-import { Form, ActionPanel, Action, useNavigation, LocalStorage, Icon } from "@raycast/api";
-import { useEffect, useState } from "react";
-import { useFetchWorkspaces, saveWorkspace, removeWorkspace, fetchWorkspaces } from "../hooks/useFetchWorkspaces";
+import { Form, ActionPanel, Action, useNavigation, Icon } from "@raycast/api";
+import { saveWorkspace, removeWorkspace, fetchWorkspaces } from "../hooks/useFetchWorkspaces";
 import { WorkspaceConfig } from "../types";
 import { confirmAlert } from "@raycast/api";
 import { useForm, FormValidation } from "@raycast/utils";
@@ -51,8 +50,6 @@ export function WorkspaceForm({
   onDelete?: () => void;
 }) {
   const { pop } = useNavigation();
-  // const { workspaces } = useFetchWorkspaces();
-  const [mainError, setMainError] = useState("");
 
   let workspaceId = currentWorkspace?.workspaceId;
   let workspaceName = currentWorkspace?.workspaceName;

@@ -1,15 +1,16 @@
-type InputTypes = "string" | "integer" | "number" | "boolean" | "object" | "array";
-export interface Field {
-  type: InputTypes;
+type PropertyType = "string" | "integer" | "number" | "boolean" | "object" | "array";
+
+export interface Property {
+  type: PropertyType;
   description: string;
-  default: any;
+  default: string | number | boolean | object | string[];
   contentEncoding?: string;
   format?: string;
   enum?: string[];
 }
 
-export interface InputObject {
-  [key: string]: Field;
+export interface Properties {
+  [key: string]: Property;
 }
 
 export type WorkspaceConfig = {
@@ -34,3 +35,43 @@ export type Resource = {
   account: number;
 };
 export type Kind = "flow" | "app" | "script" | "raw_app";
+export type WindmillItem = {
+  path: string;
+  workspace_id: string;
+  description: string;
+  value: object;
+  starred: boolean;
+  draft_only: boolean;
+  summary: string;
+  edited_by: string;
+  edited_at: Date | null;
+  archived: boolean;
+  schema: {
+    $schema: string;
+    properties: Properties;
+    required: string[];
+    type: PropertyType;
+  };
+  extra_perms: object;
+};
+
+export type WindmillListItem = {
+  workspace_id: string;
+  path: string;
+  summary: string;
+  description: string;
+  edited_by: string;
+  edited_at: string;
+  archived: boolean;
+  extra_perms: object;
+  starred: boolean;
+  has_draft: boolean;
+};
+
+export type WindmillListItemExtended = WindmillListItem & {
+  edited_at_locale?: string | null;
+  newest_date?: Date | null;
+  last_exec_time?: Date | null;
+};
+
+export type ItemWorkspace = [WindmillListItemExtended, WorkspaceConfig];

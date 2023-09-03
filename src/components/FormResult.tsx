@@ -6,14 +6,14 @@ import { WorkspaceConfig } from "../types";
 
 type ResultMaybe = {
   completed: boolean;
-  result: any;
+  result: object | string;
 };
 
 export function FormResult({ path, jobId, workspace }: { path: string; jobId: string; workspace: WorkspaceConfig }) {
   const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
 
-  const [error, setError] = useState<any>(null);
-  const [isLoading, setIsLoading] = useState<any>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [markdown, setMarkdown] = useState("");
 

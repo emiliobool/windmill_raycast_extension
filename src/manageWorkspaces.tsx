@@ -1,10 +1,11 @@
-import { ActionPanel, List, Action, Icon, LocalStorage } from "@raycast/api";
+import { ActionPanel, List, Action, Icon } from "@raycast/api";
 import { WorkspaceForm } from "./components/WorkspaceForm";
 import { useState } from "react";
 
 import { useFetchWorkspaces } from "./hooks/useFetchWorkspaces";
 
 import { LaunchProps } from "@raycast/api";
+import { WorkspaceConfig } from "./types";
 
 export default function ListWorkspacesCommand(props: LaunchProps) {
   const { workspaces, fetchWorkspaces } = useFetchWorkspaces();
@@ -35,7 +36,7 @@ export default function ListWorkspacesCommand(props: LaunchProps) {
           }
         />
       ) : (
-        workspaces.map((workspace: any) => (
+        workspaces.map((workspace: WorkspaceConfig) => (
           <List.Item
             icon={Icon.Building}
             key={workspace.id}

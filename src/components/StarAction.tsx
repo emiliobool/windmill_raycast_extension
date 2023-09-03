@@ -10,7 +10,7 @@ export function StarAction({
   workspace,
 }: {
   starred: boolean;
-  path: any;
+  path: string;
   kind: string;
   onAction?: () => unknown;
   workspace: WorkspaceConfig;
