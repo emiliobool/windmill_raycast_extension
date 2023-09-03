@@ -5,6 +5,11 @@
   "description": "Unofficial Windmill Extension to run workflows directly",
   "icon": "windmill-logo.png",
   "author": "emiliobool",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emiliobool/windmill_raycast_extension.git"
+  },
+  
   "categories": [
     "Developer Tools"
   ],
