@@ -11,6 +11,6 @@ export function setCache(name: string, value: any) {
   cache.set(name, JSON.stringify(value));
 }
 
-export function clearCache(){
-  cache.clear()
+export function clearCache() {
+  cache.clear();
 }
