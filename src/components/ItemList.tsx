@@ -73,7 +73,7 @@ export function ItemList({ kind, items, workspaces, refreshItems }: { kind: Kind
 function ListActionPanel({ kind, path, starred, workspace, refreshItems }: { kind: Kind; path: string; starred: boolean; workspace: WorkspaceConfig; refreshItems: () => void; }) {
   return <ActionPanel>
     {(kind === 'script' || kind === 'flow') &&
-      <Action.Push title={`Open ${kind.charAt(0).toUpperCase() + kind.slice(1)} Form`} target={<ScriptFlowForm path={path} kind={kind} starred={starred} workspace={workspace} />} />}
+      <Action.Push icon={Icon.TextInput} title={`Open ${kind.charAt(0).toUpperCase() + kind.slice(1)} Form`} target={<ScriptFlowForm path={path} kind={kind} starred={starred} workspace={workspace} />} />}
     <Action.OpenInBrowser title={`Open ${kind.charAt(0).toUpperCase() + kind.slice(1)}`} url={`${workspace.remoteURL}${kind}s/get/${path}`} />
     <Action.OpenInBrowser title={`Edit ${kind.charAt(0).toUpperCase() + kind.slice(1)}`} url={`${workspace.remoteURL}${kind}s/edit/${path}`} />
     <Action.OpenInBrowser title="Open Past Runs" url={`${workspace.remoteURL}runs/${path}`} />

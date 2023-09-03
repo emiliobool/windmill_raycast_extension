@@ -28,12 +28,13 @@ export default function ListWorkspacesCommand(props: LaunchProps) {
             ) : (
                 workspaces.map((workspace: any) => (
                     <List.Item
+                        icon={Icon.Building}
                         key={workspace.id}
                         id={workspace.id}
                         title={workspace.workspaceName}
                         subtitle={workspace.remoteURL}
                         actions={<ActionPanel>
-                            <Action.Push title="Edit Workspace" icon={Icon.Pencil} target={<WorkspaceForm workspace={workspace} onCreate={fetchWorkspaces} onDelete={fetchWorkspaces }/>} />
+                            <Action.Push title="Edit Workspace" icon={Icon.Pencil} target={<WorkspaceForm workspace={workspace} onCreate={fetchWorkspaces} onDelete={fetchWorkspaces} />} />
                             <Action.Push title="Add Workspace" icon={Icon.Plus} shortcut={{ modifiers: ["cmd"], key: "n" }} target={<WorkspaceForm onCreate={fetchWorkspaces} onDelete={fetchWorkspaces} />} />
                             <Action.CopyToClipboard title="Copy Config to Clipboard" content={JSON.stringify({ ...workspace, id: undefined })} />
                         </ActionPanel>}
