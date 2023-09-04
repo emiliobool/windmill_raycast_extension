@@ -1,7 +1,7 @@
 import { ActionPanel, Detail, List, Action, Icon, launchCommand, LaunchType } from "@raycast/api";
 import { ScriptFlowForm } from "./ScriptFlowForm";
 import { StarAction } from "./StarAction";
-import { WorkspaceConfig, Kind } from "../types";
+import { WorkspaceConfig, Kind, ExtendedWindmillWorkspacePair } from "../types";
 import { useState } from "react";
 
 export function ItemList({
@@ -11,7 +11,7 @@ export function ItemList({
   refreshItems,
 }: {
   kind: Kind;
-  items: any[];
+  items: ExtendedWindmillWorkspacePair[];
   workspaces: WorkspaceConfig[];
   refreshItems: () => void;
 }) {
@@ -59,7 +59,7 @@ export function ItemList({
       ) : (
         items
           .filter((item_workspace) => currentWorkspace === "All" || item_workspace[1].id === currentWorkspace)
-          .map((item_workspace: any) => {
+          .map((item_workspace: ExtendedWindmillWorkspacePair) => {
             const [item, workspace] = item_workspace;
             console.log("item", item);
             console.log("workspace", workspace);

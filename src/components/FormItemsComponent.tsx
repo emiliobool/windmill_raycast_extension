@@ -1,5 +1,5 @@
 import { Form } from "@raycast/api";
-import { InputObject } from "../types";
+import { Properties } from "../types";
 import { WorkspaceConfig, Resource, Kind } from "../types";
 
 export const FormItemsComponent = ({
@@ -7,7 +7,7 @@ export const FormItemsComponent = ({
   required,
   resources,
 }: {
-  properties: InputObject;
+  properties: Properties;
   required: string[];
   kind: Kind;
   resources: Resource[];
@@ -16,7 +16,10 @@ export const FormItemsComponent = ({
   return (
     <>
       {Object.keys(properties).map((name, idx) => {
-        let { type, description, default: defaultValue, contentEncoding, format, enum: enumValues } = properties[name];
+        const property = properties[name];
+        let defaultValue = property.default;
+        const { type, description, contentEncoding, format, enum: enumValues } = property;
+
         const title = `${name}${required.includes(name) ? "*" : ""}`;
         const resource_type = format?.replace(/^resource-/, "");
 

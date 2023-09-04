@@ -44,7 +44,7 @@ export type WindmillItem = {
   draft_only: boolean;
   summary: string;
   edited_by: string;
-  edited_at: Date | null;
+  edited_at: string | null;
   archived: boolean;
   schema: {
     $schema: string;
@@ -68,10 +68,14 @@ export type WindmillListItem = {
   has_draft: boolean;
 };
 
-export type WindmillListItemExtended = WindmillListItem & {
+export type WindmillListItemExtended = Omit<WindmillListItem, "edited_at"> & {
+  edited_at: Date | null | undefined;
   edited_at_locale?: string | null;
-  newest_date?: Date | null;
-  last_exec_time?: Date | null;
+  newest_date?: Date | null | undefined;
+  last_exec_time?: Date | null | undefined;
+  kind: string;
 };
 
-export type ItemWorkspace = [WindmillListItemExtended, WorkspaceConfig];
+export type WindmillWorkspacePairArray = [WindmillListItem, WorkspaceConfig];
+
+export type ExtendedWindmillWorkspacePair = [WindmillListItemExtended, WorkspaceConfig];

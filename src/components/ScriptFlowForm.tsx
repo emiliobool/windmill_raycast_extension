@@ -3,10 +3,10 @@ import { FormItemsComponent } from "./FormItemsComponent";
 import { FormResult } from "./FormResult";
 import { useFetchWmill } from "../hooks/useFetchWmill";
 import { StarAction } from "./StarAction";
-import { WorkspaceConfig, Resource, Kind } from "../types";
+import { WorkspaceConfig, Resource, Kind, WindmillItem } from "../types";
 import { useEffect, useState } from "react";
 import fetch from "node-fetch";
-import { InputObject } from "../types";
+import { Properties } from "../types";
 
 export function ScriptFlowForm({
   path,
@@ -22,7 +22,7 @@ export function ScriptFlowForm({
   let path_prefix = "";
   if (kind == "script") path_prefix = "p/";
   const url = `${workspace.remoteURL}api/w/${workspace.workspaceId}/${kind}s/get/${path_prefix}${path}`;
-  const { data, error: loadError, isLoading } = useFetchWmill<any>(url, workspace.workspaceToken);
+  const { data, error: loadError, isLoading } = useFetchWmill<WindmillItem>(url, workspace.workspaceToken);
 
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState<boolean>(false);
@@ -48,7 +48,7 @@ export function ScriptFlowForm({
 
       console.log(formats);
 
-      async function fetchResources() {
+      const fetchResources = async function () {
         const resource_types = formats.join(",");
         const url = `${workspace.remoteURL}api/w/${workspace.workspaceId}/resources/list?resource_type=${resource_types}&per_page=100`;
         const response = (await fetch(url, {
@@ -60,7 +60,7 @@ export function ScriptFlowForm({
         }).then((r) => r.json())) as Resource[];
         console.log("response", response);
         setResources(response);
-      }
+      };
 
       if (formats.length) {
         fetchResources();
@@ -242,7 +242,8 @@ async function getResourceValue(path: string, workspace: WorkspaceConfig) {
   return value;
 }
 
-async function submitData(url: string, token: string, values: InputObject) {
+// @TODO: I think this Properties is wrong here
+async function submitData(url: string, token: string, values: Properties) {
   console.log("submitting", url, values);
   const response = await fetch(url, {
     method: "POST",
