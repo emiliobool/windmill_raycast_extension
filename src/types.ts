@@ -66,6 +66,7 @@ export type WindmillListItem = {
   extra_perms: object;
   starred: boolean;
   has_draft: boolean;
+  draft_only: boolean;
 };
 
 export type WindmillListItemExtended = Omit<WindmillListItem, "edited_at"> & {

@@ -8,7 +8,7 @@ export const FormItemsComponent = ({
   resources,
 }: {
   properties: Properties;
-  required: string[];
+  required: string[] | undefined;
   kind: Kind;
   resources: Resource[];
   workspace: WorkspaceConfig;
@@ -20,7 +20,7 @@ export const FormItemsComponent = ({
         let defaultValue = property.default;
         const { type, description, contentEncoding, format, enum: enumValues } = property;
 
-        const title = `${name}${required.includes(name) ? "*" : ""}`;
+        const title = `${name}${required?.includes(name) ? "*" : ""}`;
         const resource_type = format?.replace(/^resource-/, "");
 
         if (defaultValue == null) {
@@ -41,13 +41,13 @@ export const FormItemsComponent = ({
               format === "uuid" ||
               format === "ipv4"
             ) {
-              return <Form.TextField key={idx} id={name} title={title} defaultValue={defaultValue} />;
+              return <Form.TextField key={idx} id={name} title={title} defaultValue={String(defaultValue)} />;
             } else if (format === "yaml" || format === "sql") {
-              return <Form.TextArea key={idx} id={name} title={title} defaultValue={defaultValue} />;
+              return <Form.TextArea key={idx} id={name} title={title} defaultValue={String(defaultValue)} />;
             }
             if (enumValues) {
               return (
-                <Form.Dropdown key={idx} id={name} title={title} defaultValue={defaultValue}>
+                <Form.Dropdown key={idx} id={name} title={title} defaultValue={String(defaultValue)}>
                   {enumValues.map((value, index) => (
                     <Form.Dropdown.Item key={index} value={value} title={value} />
                   ))}
@@ -55,7 +55,7 @@ export const FormItemsComponent = ({
               );
             }
 
-            return <Form.TextField key={idx} id={name} title={title} defaultValue={defaultValue} />;
+            return <Form.TextField key={idx} id={name} title={title} defaultValue={String(defaultValue)} />;
 
           case "integer":
           case "number":
@@ -73,7 +73,7 @@ export const FormItemsComponent = ({
           case "object":
             if (resource_type) {
               return (
-                <Form.Dropdown key={idx} id={name} title={title} defaultValue={defaultValue}>
+                <Form.Dropdown key={idx} id={name} title={title} defaultValue={String(defaultValue)}>
                   {/* <Form.Dropdown.Item key="null" value="null" title="null" icon="⚙️" /> */}
                   {resources
                     .filter((resource) => resource.resource_type === resource_type)
