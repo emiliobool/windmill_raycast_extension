@@ -249,8 +249,7 @@ async function getJobDetails(workspace: WorkspaceConfig, jobId: string): Promise
     },
   });
 
-  return await response.json() as JobDetails;
-
+  return (await response.json()) as JobDetails;
 }
 
 async function CancelQueuedJob(workspace: WorkspaceConfig, jobId: string): Promise<string> {
