@@ -156,9 +156,9 @@ function ScriptActionPanel({
   workspace: WorkspaceConfig;
 }) {
   const { push } = useNavigation();
-  const openURL = `${workspace.remoteURL}${kind}s/get/${path}`;
-  const editURL = `${workspace.remoteURL}${kind}s/edit/${path}`;
-  const pastRunsURL = `${workspace.remoteURL}runs/${path}`;
+  const openURL = `${workspace.remoteURL}${kind}s/get/${path}?workspace=${workspace.workspaceId}`;
+  const editURL = `${workspace.remoteURL}${kind}s/edit/${path}?workspace=${workspace.workspaceId}`;
+  const pastRunsURL = `${workspace.remoteURL}runs/${path}?workspace=${workspace.workspaceId}`;
 
   return (
     <ActionPanel>

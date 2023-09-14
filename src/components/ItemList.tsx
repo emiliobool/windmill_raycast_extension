@@ -113,13 +113,16 @@ function ListActionPanel({
       )}
       <Action.OpenInBrowser
         title={`Open ${kind.charAt(0).toUpperCase() + kind.slice(1)}`}
-        url={`${workspace.remoteURL}${kind}s/get/${path}`}
+        url={`${workspace.remoteURL}${kind}s/get/${path}?workspace=${workspace.workspaceId}`}
       />
       <Action.OpenInBrowser
         title={`Edit ${kind.charAt(0).toUpperCase() + kind.slice(1)}`}
-        url={`${workspace.remoteURL}${kind}s/edit/${path}`}
+        url={`${workspace.remoteURL}${kind}s/edit/${path}?workspace=${workspace.workspaceId}`}
       />
-      <Action.OpenInBrowser title="Open Past Runs" url={`${workspace.remoteURL}runs/${path}`} />
+      <Action.OpenInBrowser
+        title="Open Past Runs"
+        url={`${workspace.remoteURL}runs/${path}?workspace=${workspace.workspaceId}`}
+      />
       <StarAction path={path} kind={kind} starred={starred} onAction={refreshItems} workspace={workspace} />
       <Action
         title="Reload"
