@@ -1,52 +1,53 @@
 # Windmill
 
-Unofficial Windmill Extension for Raycast - run flows and scripts directly.
+Unofficial Windmill Extension for Raycast – Run flows and scripts directly from Raycast.
 
 ## Setup
 
-Before you can use this extension, you need to set up your workspace.
+Before using this extension, set up your workspace by following these steps:
 
-1. **Workspace ID**: Your workspace name.
-2. **Instance URL**: Your URL if using a self-hosted environment; otherwise, leave it as the default.
-3. **Access Token**: Go to user settings to create a token.
+1. **Workspace ID**: Enter your workspace name.
+2. **Instance URL**: If you're using a self-hosted environment, enter your URL. Otherwise, retain the default setting.
+3. **Access Token**: Create a token through the user settings.
 
-Enter your data using the "Manage Workspaces" command. After this, the "View Flows", "View Scripts", and "View Apps" commands will become functional.
+Use the "Manage Workspaces" command to input your details. Once completed, the "View Flows", "View Scripts", and "View Apps" commands will become available.
 
 ## Flows Command
-Use this primary command to list all flows from your configured workspaces.
+
+This primary command allows you to list all flows from your configured workspaces.
 
 ### Filters
-Filter by workspace using the dropdown menu (CMD + P).
+Filter the flows by workspace using the dropdown menu (CMD + P).
 
 ### Actions
 
-- **Open Flow Form** (Enter): Open the built-in form to submit a flow.
-- **Open Flow** (CMD + Enter): Open the flow page in the Windmill web interface.
-- **Edit Flow**: Navigate to the flow edit page in the Windmill web interface.
-- **Open Past Runs**: Access past runs in the Windmill web interface.
-- **Add/Remove Star**: Add or remove a flow from your favorites in the Windmill UI.
-- **Refresh**: Bypass the local cache to re-fetch all your flows.
+- **Open Flow Form** (Enter): Launch the built-in form to initiate a flow.
+- **Open Flow** (CMD + Enter): Access the flow page in the Windmill web interface.
+- **Edit Flow**: Edit the flow using the Windmill web interface.
+- **Open Past Runs**: View previous runs on the Windmill web interface.
+- **Add/Remove Star**: Modify your favorites list in the Windmill UI.
+- **Refresh**: Bypass the local cache to update your flows list.
 
 ### Submit Flow Form
-View and edit all configured fields before submitting the flow directly from Raycast.
+Review and amend all configured fields before executing the flow through Raycast.
 
 #### Actions 
-- **Submit Flow** (CMD + Enter): Submit the flow with the entered data, then display the Result Page.
+- **Submit Flow** (CMD + Enter): Commence the flow with the specified data, and then visualize the Result Page.
 - **Open Flow** (CMD + Shift + Enter)
 - **Edit Flow**
 - **Remove Star**
 - **Open Past Runs**
 
 ### Flow Result Page
-Displays a link to the result. To poll for the result and display it in the same window, press CMD + Enter. 
+View job information on this page. Once a job finishes, use cmd+enter to copy the outcome to your clipboard.
 
 #### Actions 
 - **Open Job** (Enter)
-- **Poll Result** (CMD + Enter): Wait for the job to finish before displaying the result as text or JSON.
+- **Copy Result** (CMD + Enter): Duplicate the result to your clipboard. (Available only after successful job completion)
 - **Open Past Runs**
 
 ## View Scripts Command
-Operates similarly to the "Flows Command," but is used for listing and submitting scripts. It supports resources during submission and mirrors the UI of a flow command precisely.
+Functionality mirrors the "Flows Command," facilitating the listing and submission of scripts. Supports resource inclusion during submission.
 
 ## View Apps Command
-Display all apps and open them in the Windmill web UI using this command.
+Utilize this command to enumerate all apps and access them in the Windmill web UI.
