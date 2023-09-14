@@ -1,6 +1,6 @@
-import { ActionPanel, Detail, List, Action, Icon, launchCommand, LaunchType } from "@raycast/api";
+import { ActionPanel, Detail, List, Action, Icon, launchCommand, LaunchType, Keyboard } from "@raycast/api";
 import { ScriptFlowForm } from "./ScriptFlowForm";
-import { StarAction } from "./StarAction";
+import { StarAction } from "../actions/StarAction";
 import { WorkspaceConfig, Kind, ExtendedWindmillWorkspacePair } from "../types";
 import { useState } from "react";
 
@@ -45,6 +45,7 @@ export function ItemList({
             <ActionPanel>
               <Action
                 title="Add Workspace"
+                shortcut={Keyboard.Shortcut.Common.New}
                 icon={Icon.Gear}
                 onAction={async () => {
                   await launchCommand({
@@ -112,11 +113,13 @@ function ListActionPanel({
         />
       )}
       <Action.OpenInBrowser
+        shortcut={Keyboard.Shortcut.Common.Open}
         title={`Open ${kind.charAt(0).toUpperCase() + kind.slice(1)}`}
         url={`${workspace.remoteURL}${kind}s/get/${path}?workspace=${workspace.workspaceId}`}
       />
       <Action.OpenInBrowser
         title={`Edit ${kind.charAt(0).toUpperCase() + kind.slice(1)}`}
+        shortcut={Keyboard.Shortcut.Common.Edit}
         url={`${workspace.remoteURL}${kind}s/edit/${path}?workspace=${workspace.workspaceId}`}
       />
       <Action.OpenInBrowser
@@ -125,9 +128,9 @@ function ListActionPanel({
       />
       <StarAction path={path} kind={kind} starred={starred} onAction={refreshItems} workspace={workspace} />
       <Action
-        title="Reload"
+        title="Refresh List"
         icon={Icon.RotateAntiClockwise}
-        shortcut={{ modifiers: ["cmd"], key: "r" }}
+        shortcut={Keyboard.Shortcut.Common.Refresh}
         onAction={refreshItems}
       />
     </ActionPanel>

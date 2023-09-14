@@ -1,4 +1,4 @@
-import { Form, ActionPanel, Action, useNavigation, Icon } from "@raycast/api";
+import { Form, ActionPanel, Action, useNavigation, Icon, Keyboard } from "@raycast/api";
 import { saveWorkspace, removeWorkspace, fetchWorkspaces } from "../hooks/useFetchWorkspaces";
 import { WorkspaceConfig } from "../types";
 import { confirmAlert } from "@raycast/api";
@@ -146,7 +146,14 @@ export function WorkspaceForm({
       actions={
         <ActionPanel>
           <Action.SubmitForm title="Save Workspace" icon={Icon.Pencil} onSubmit={handleSubmit} />
-          {currentWorkspace?.id && <Action title="Delete Workspace" icon={Icon.Trash} onAction={handleDelete} />}
+          {currentWorkspace?.id && (
+            <Action
+              title="Delete Workspace"
+              shortcut={Keyboard.Shortcut.Common.Remove}
+              icon={Icon.Trash}
+              onAction={handleDelete}
+            />
+          )}
         </ActionPanel>
       }
     >

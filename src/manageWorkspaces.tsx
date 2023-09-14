@@ -1,4 +1,4 @@
-import { ActionPanel, List, Action, Icon } from "@raycast/api";
+import { ActionPanel, List, Action, Icon, Keyboard } from "@raycast/api";
 import { WorkspaceForm } from "./components/WorkspaceForm";
 import { useEffect, useState } from "react";
 
@@ -29,7 +29,7 @@ export default function ListWorkspacesCommand(props: LaunchProps) {
               <Action.Push
                 title="Add Workspace"
                 icon={Icon.Plus}
-                shortcut={{ modifiers: ["cmd"], key: "n" }}
+                shortcut={Keyboard.Shortcut.Common.New}
                 target={<WorkspaceForm name={searchText} onCreate={fetchWorkspaces} onDelete={fetchWorkspaces} />}
               />
             </ActionPanel>
@@ -48,16 +48,18 @@ export default function ListWorkspacesCommand(props: LaunchProps) {
                 <Action.Push
                   title="Edit Workspace"
                   icon={Icon.Pencil}
+                  shortcut={Keyboard.Shortcut.Common.Edit}
                   target={<WorkspaceForm workspace={workspace} onCreate={fetchWorkspaces} onDelete={fetchWorkspaces} />}
                 />
                 <Action.Push
                   title="Add Workspace"
                   icon={Icon.Plus}
-                  shortcut={{ modifiers: ["cmd"], key: "n" }}
+                  shortcut={Keyboard.Shortcut.Common.New}
                   target={<WorkspaceForm onCreate={fetchWorkspaces} onDelete={fetchWorkspaces} />}
                 />
                 <Action.CopyToClipboard
                   title="Copy Config to Clipboard"
+                  shortcut={Keyboard.Shortcut.Common.Copy}
                   content={JSON.stringify({ ...workspace, id: undefined })}
                 />
               </ActionPanel>

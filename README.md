@@ -22,20 +22,20 @@ Filter the flows by workspace using the dropdown menu (CMD + P).
 ### Actions
 
 - **Open Flow Form** (Enter): Launch the built-in form to initiate a flow.
-- **Open Flow** (CMD + Enter): Access the flow page in the Windmill web interface.
-- **Edit Flow**: Edit the flow using the Windmill web interface.
+- **Open Flow** (CMD + O): Access the flow page in the Windmill web interface.
+- **Edit Flow** (CMD + E): Edit the flow using the Windmill web interface.
 - **Open Past Runs**: View previous runs on the Windmill web interface.
-- **Add/Remove Star**: Modify your favorites list in the Windmill UI.
+- **Add/Remove Star** (CMD + P): Modify your favorites list in the Windmill UI.
 - **Refresh**: Bypass the local cache to update your flows list.
 
 ### Submit Flow Form
 Review and amend all configured fields before executing the flow through Raycast.
 
 #### Actions 
-- **Submit Flow** (CMD + Enter): Commence the flow with the specified data, and then visualize the Result Page.
-- **Open Flow** (CMD + Shift + Enter)
-- **Edit Flow**
-- **Remove Star**
+- **Submit Flow**: Commence the flow with the specified data, and then visualize the Result Page.
+- **Open Flow** (CMD + O)
+- **Edit Flow** (CMD + E)
+- **Remove Star** (CMD + P)
 - **Open Past Runs**
 
 ### Flow Result Page
@@ -43,7 +43,7 @@ View job information on this page. Once a job finishes, use cmd+enter to copy th
 
 #### Actions 
 - **Open Job** (Enter)
-- **Copy Result** (CMD + Enter): Duplicate the result to your clipboard. (Available only after successful job completion)
+- **Copy Result** (CMD + SHIFT + C): Duplicate the result to your clipboard. (Available only after successful job completion)
 - **Open Past Runs**
 
 ## View Scripts Command

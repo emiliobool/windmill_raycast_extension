@@ -1,8 +1,8 @@
-import { ActionPanel, Action, Form, useNavigation, Detail, showToast, Toast, Icon } from "@raycast/api";
+import { ActionPanel, Action, Form, useNavigation, Detail, showToast, Toast, Icon, Keyboard } from "@raycast/api";
 import { FormItemsComponent } from "./FormItemsComponent";
-import { FormResult } from "./FormResult";
+import { FormResult } from "./FormResult/FormResult";
 import { useFetchWmill } from "../hooks/useFetchWmill";
-import { StarAction } from "./StarAction";
+import { StarAction } from "../actions/StarAction";
 import { WorkspaceConfig, Resource, Kind, WindmillItem } from "../types";
 import { useEffect, useState } from "react";
 import fetch from "node-fetch";
@@ -185,8 +185,16 @@ function ScriptActionPanel({
         }}
       />
 
-      <Action.OpenInBrowser title={kind === "script" ? "Open Script" : "Open Flow"} url={openURL} />
-      <Action.OpenInBrowser title={kind === "script" ? "Edit Script" : "Edit Flow"} url={editURL} />
+      <Action.OpenInBrowser
+        shortcut={Keyboard.Shortcut.Common.Open}
+        title={kind === "script" ? "Open Script" : "Open Flow"}
+        url={openURL}
+      />
+      <Action.OpenInBrowser
+        shortcut={Keyboard.Shortcut.Common.Edit}
+        title={kind === "script" ? "Edit Script" : "Edit Flow"}
+        url={editURL}
+      />
       <StarAction path={path} kind={kind} starred={starred} workspace={workspace} />
       <Action.OpenInBrowser title="Open Past Runs" url={pastRunsURL} />
     </ActionPanel>
