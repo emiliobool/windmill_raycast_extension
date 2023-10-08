@@ -35,16 +35,17 @@ export function ResultMarkdown(workspace: WorkspaceConfig, details: JobDetails, 
     progressBar = "🟥".repeat(10);
   }
 
-  const progressEmoji = progress === 100 ? "✅" : "⏳";
+  let progressEmoji = "⏳";
   let timeTaken = "";
   if (details.type === "CompletedJob") {
+    progressEmoji = details.success ? "✅" : "❌";
     timeTaken = ` (ran in ${details.duration_ms / 1000}s)`;
   } else {
     timeTaken = ` (running for ${(new Date().getTime() - new Date(details.started_at).getTime()) / 1000}s)`;
   }
   let resultMessage = "";
 
-  if (result.length < 1000) {
+  if (result.length < 4000) {
     resultMessage = `\`\`\`
 ${result}
 \`\`\``;
