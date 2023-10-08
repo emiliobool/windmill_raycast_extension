@@ -5,10 +5,10 @@ export type GetJobUpdatesResponse = {
   running?: boolean;
   completed?: boolean;
   new_logs?: string;
-  mem_peak?: any;
+  mem_peak?: unknown;
 };
 
-async function getJobUpdates(workspace: WorkspaceConfig, jobId: string): Promise<GetJobUpdatesResponse> {
+export async function getJobUpdates(workspace: WorkspaceConfig, jobId: string): Promise<GetJobUpdatesResponse> {
   const url = `${workspace.remoteURL}api/w/${workspace.workspaceId}/jobs_u/getupdate/${jobId}?running=false&log_offset=100000`;
   const response = await fetch(url, {
     method: "GET",

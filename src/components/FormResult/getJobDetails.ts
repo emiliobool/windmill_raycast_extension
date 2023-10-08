@@ -26,11 +26,8 @@ export interface JobDetails {
   success: boolean;
   script_path?: string;
   script_hash?: string;
-  args?: {
-    property1?: any;
-    property2?: any;
-  };
-  result?: any;
+  args?: object;
+  result?: object | string;
   logs?: string;
   deleted?: boolean;
   raw_code?: string;
@@ -49,8 +46,8 @@ export interface JobDetails {
       count?: number;
       iterator?: {
         index?: number;
-        itered?: any[];
-        args?: any;
+        itered?: unknown[];
+        args?: unknown;
       };
       flow_jobs?: string[];
       branch_chosen?: {
@@ -73,8 +70,7 @@ export interface JobDetails {
       count?: number;
       iterator?: {
         index?: number;
-        itered?: any[];
-        args?: any;
+        itered?: unknown[];
       };
       flow_jobs?: string[];
       branch_chosen?: {
@@ -102,7 +98,7 @@ export interface JobDetails {
       value?: {
         input_transforms?: {
           [key: string]: {
-            value?: any;
+            value?: unknown;
             type?: string;
           };
         };
@@ -120,7 +116,7 @@ export interface JobDetails {
         expr?: string;
       };
       sleep?: {
-        value?: any;
+        value?: unknown;
         type?: string;
       };
       cache_ttl?: number;
@@ -128,13 +124,13 @@ export interface JobDetails {
       summary?: string;
       mock?: {
         enabled?: boolean;
-        return_value?: any;
+        return_value?: unknown;
       };
       suspend?: {
         required_events?: number;
         timeout?: number;
         resume_form?: {
-          schema?: any;
+          schema?: object;
         };
       };
       retry?: {
@@ -154,7 +150,7 @@ export interface JobDetails {
       value?: {
         input_transforms?: {
           [key: string]: {
-            value?: any;
+            value?: unknown;
             type?: string;
           };
         };
@@ -172,7 +168,7 @@ export interface JobDetails {
         expr?: string;
       };
       sleep?: {
-        value?: any;
+        value?: unknown;
         type?: string;
       };
       cache_ttl?: number;
@@ -180,13 +176,13 @@ export interface JobDetails {
       summary?: string;
       mock?: {
         enabled?: boolean;
-        return_value?: any;
+        return_value?: unknown;
       };
       suspend?: {
         required_events?: number;
         timeout?: number;
         resume_form?: {
-          schema?: any;
+          schema?: unknown;
         };
       };
       retry?: {
